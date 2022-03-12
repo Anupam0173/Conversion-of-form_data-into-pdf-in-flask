@@ -129,13 +129,12 @@
 
         <div class="parent">
             <div class="child" style="height:25px;width: 100%;">
-                <b>Skills : {{skills}}</b>
-                <b>abc : {{skills[0]}}</b>
+                <b>Skills : </b>
+                
             </div>
         </div>
         <div class="parent parent-list">
             {% for skill in skills %}   
-                <p>{{skill}}</p>                    
                 {% if skill.selected | title %}
                     <div class="child-list">
                         <input type="checkbox" checked >  

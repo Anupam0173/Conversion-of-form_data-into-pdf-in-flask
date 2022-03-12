@@ -13,18 +13,20 @@ app.config["STATIC_FILE_PATH"] = "static"
 @app.route("/", methods =["POST"])
 def hello_world():
     if request.method == "POST":
+        request_data = request.get_json()
         context = {}
-        first_name = request.form.get("first_name")
-        last_name = request.form.get("last_name")
-        DOB = request.form.get("DOB")
-        Gender = request.form.get("Gender")
-        skills = request.form.get("skills")
+        first_name = request_data.get("first_name")
+        last_name = request_data.get("last_name")
+        DOB = request_data.get("DOB")
+        Gender = request_data.get("Gender")
+        skills = request_data.get("skills")
         context["first_name"] = first_name
         context["last_name"] = last_name
         context["DOB"] = DOB
         context["Gender"] = Gender
-        context["skills"] = list(skills.split("},"))
+        context["skills"] = skills
         print("-->",context)
+        print("-->",type(context["skills"]))
 
 
         #logic for pdf conversion
@@ -32,8 +34,8 @@ def hello_world():
             template = Template(file.read())
 
             html_output = template.render(context)
-            file_name = f'{context.get("first_name")}-{context.get("last_name")}-'\
-                        f'{context.get("DOB")}-{context.get("Gender")}.pdf'
+            file_name = f'{context.get("first_name")}-{context.get("last_name")}'\
+                        f'-{context.get("DOB")}-{context.get("Gender")}.pdf'
             pdf_data = HTML(string=html_output)
             pdf_data_str = pdf_data.write_pdf()
 
