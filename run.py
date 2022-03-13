@@ -25,8 +25,6 @@ def hello_world():
         context["DOB"] = DOB
         context["Gender"] = Gender
         context["skills"] = skills
-        print("-->",context)
-        print("-->",type(context["skills"]))
 
 
         #logic for pdf conversion

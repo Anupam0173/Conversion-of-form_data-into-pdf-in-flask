@@ -133,14 +133,13 @@
                 
             </div>
         </div>
-        <div class="parent parent-list">
+        <div>
             {% for skill in skills %}   
-                {% if skill.selected | title %}
-                    <div class="child-list">
-                        <input type="checkbox" checked >  
-                        {{ skill.value }}<br>
-                    </div>
-                {% endif %}                       
+                {% if skill | title %}
+                        <input type="checkbox" {{ 'checked' if skill.selected}} >  
+                        {{ skill.value }}
+                {% endif %}              
+                <br>
             {% endfor %}
         </div>
 </body>
