@@ -43,7 +43,7 @@ def hello_world():
             file.write(pdf_data_str)
             file.close()
             print("PDF uploaded to local file : ", local_pdf_url)
-    return {"PDF uploaded to local file" : local_pdf_url}
+    return {"PDF uploaded to local file" : local_pdf_url.split("/")[1]}
 
 if __name__ == "__main__":
 	app.run(debug = True)
