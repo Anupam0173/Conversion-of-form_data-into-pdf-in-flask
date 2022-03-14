@@ -1,0 +1,14 @@
+curl --location --request POST 'http://127.0.0.1:5000/' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "first_name":"Vijay",
+    "last_name":"khemnar",
+    "DOB":"13-23-88",
+    "Gender":"Male",
+    "skills":[
+                {"value": "Java", "selected": true},
+                {"value": "c", "selected": false},
+                {"value": "c++", "selected": true},
+                {"value": "Python", "selected": true}
+            ]
+}'
